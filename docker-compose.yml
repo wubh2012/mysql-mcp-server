@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  # MySQL MCP Server 服务
+  mysql-mcp-server:
+    build: .
+    container_name: mysql-mcp-server
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_PORT=3306
+      - MYSQL_USER=${MYSQL_USER:-root}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD:-password}
+      - MYSQL_DATABASE=${MYSQL_DATABASE:-test_db}
+      - READ_ONLY=${READ_ONLY:-true}
+      - MAX_ROWS=${MAX_ROWS:-100}
+      - QUERY_TIMEOUT=${QUERY_TIMEOUT:-30}
+      - BACKUP_DIR=/app/backups
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - LOG_FORMAT=${LOG_FORMAT:-json}
+    volumes:
+      - ./backups:/app/backups
+      - ./logs:/app/logs
+    depends_on:
+      - mysql
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+
+  # MySQL 数据库服务（可选，用于测试）
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-mcp-db
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD:-password}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-test_db}
+      MYSQL_USER: ${MYSQL_USER:-app_user}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-password}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    restart: unless-stopped
+    command: --default-authentication-plugin=mysql_native_password
+
+volumes:
+  mysql_data:

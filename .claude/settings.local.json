@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tree:*)",
+      "Bash(dir:*)",
+      "Bash(findstr:*)",
+      "Bash(cmd /c \"dir /s /b 2>nul | findstr /i /c:\\\\.py$ /c:\\\\.ts$ /c:\\\\.js$ /c:\\\\package\\\\.json$ /c:\\\\pyproject\\\\.toml$ /c:\\\\requirements\\\\.txt$ /c:\\\\tsconfig\\\\.json$ /c:\\\\.gitignore$ /c:\\\\README\\\\. /c:\\\\setup\\\\.py$ /c:\\\\Dockerfile$ /c:\\\\docker-compose\\\\.yml$ /c:\\\\.env$ /c:\\\\Makefile$\")",
+      "Bash(cmd:*)",
+      "Bash(powershell -Command:*)",
+      "Bash(cat:*)",
+      "Bash(attrib:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run build:*)",
+      "Bash(find:*)",
+      "Bash(copy:*)",
+      "Bash(node:*)",
+      "Bash(echo.)"
+    ]
+  }
+}

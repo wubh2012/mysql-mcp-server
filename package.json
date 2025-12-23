@@ -1,0 +1,44 @@
+{
+  "name": "mysql-mcp-server",
+  "version": "1.0.0",
+  "description": "MySQL MCP Server - 让 AI 助手通过自然语言查询和管理 MySQL 数据库",
+  "main": "dist/main.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "tsx src/main.ts",
+    "dev": "tsx watch src/main.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint src/**/*.ts",
+    "format": "prettier --write src/**/*.ts"
+  },
+  "keywords": [
+    "mcp",
+    "mysql",
+    "ai",
+    "claude",
+    "database",
+    "natural-language"
+  ],
+  "author": "水果芋头",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.3",
+    "mysql2": "^3.6.5",
+    "dotenv": "^16.3.1",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "@types/mysql2": "types/mysql2",
+    "typescript": "^5.3.3",
+    "tsx": "^4.7.0",
+    "vitest": "^1.1.0",
+    "@vitest/coverage-v8": "^1.1.0",
+    "eslint": "^8.56.0",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "prettier": "^3.1.1"
+  }
+}
