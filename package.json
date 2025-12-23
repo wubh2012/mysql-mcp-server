@@ -1,9 +1,15 @@
 {
-  "name": "mysql-mcp-server",
+  "name": "@aalmix/mysql-mcp-server",
   "version": "1.0.0",
   "description": "MySQL MCP Server - 让 AI 助手通过自然语言查询和管理 MySQL 数据库",
   "main": "dist/main.js",
   "type": "module",
+  "bin": {
+    "mysql-mcp-server": "dist/main.js"
+  },
+  "files": [
+    "dist/**/*"
+  ],
   "scripts": {
     "build": "tsc",
     "start": "tsx src/main.ts",
@@ -31,7 +37,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.10.5",
-    "@types/mysql2": "types/mysql2",
+    "@types/mysql2": "github:types/mysql2",
     "typescript": "^5.3.3",
     "tsx": "^4.7.0",
     "vitest": "^1.1.0",
@@ -40,5 +46,9 @@
     "@typescript-eslint/eslint-plugin": "^6.15.0",
     "@typescript-eslint/parser": "^6.15.0",
     "prettier": "^3.1.1"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
   }
 }

@@ -1,4 +1,27 @@
 #!/usr/bin/env node
+/**
+ * MySQL MCP Server
+ *
+ * A Model Context Protocol server for MySQL database operations.
+ * Allows AI assistants like Claude to query and manage MySQL databases via natural language.
+ *
+ * Usage with Claude Desktop:
+ * {
+ *   "mcpServers": {
+ *     "mysql": {
+ *       "command": "npx",
+ *       "args": ["-y", "@your-npm-username/mysql-mcp-server"],
+ *       "env": {
+ *         "MYSQL_HOST": "localhost",
+ *         "MYSQL_PORT": "3306",
+ *         "MYSQL_USER": "your_user",
+ *         "MYSQL_PASSWORD": "your_password",
+ *         "MYSQL_DATABASE": "your_database"
+ *       }
+ *     }
+ *   }
+ * }
+ */
 
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
