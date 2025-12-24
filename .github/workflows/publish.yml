@@ -38,3 +38,21 @@ jobs:
           # Ensure token is configured for npm
           npm config set //registry.npmjs.org/:_authToken "$NODE_AUTH_TOKEN"
           npm publish --access public
+
+      - name: Setup Node for GitHub Packages
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@wubh2012'
+
+      - name: Publish to GitHub Packages
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # create a temporary package.json with GitHub scope name, publish, then restore
+          node -e "const fs=require('fs');const p=require('./package.json');p.name='@wubh2012/mysql-mcp-server';fs.writeFileSync('package.json.tmp',JSON.stringify(p,null,2));"
+          mv package.json package.json.orig
+          mv package.json.tmp package.json
+          npm publish --registry https://npm.pkg.github.com/
+          mv package.json.orig package.json
