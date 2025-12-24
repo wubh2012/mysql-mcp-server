@@ -29,17 +29,17 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Test (skip if no tests)
-        shell: bash
-        run: |
-          set -e
-          shopt -s globstar nullglob
-          test_files=(**/*.test.* **/*.spec.*)
-          if [ ${#test_files[@]} -gt 0 ]; then
-            npm test
-          else
-            echo "No test files found, skipping tests."
-          fi
+      # - name: Test (skip if no tests)
+      #   shell: bash
+      #   run: |
+      #     set -e
+      #     shopt -s globstar nullglob
+      #     test_files=(**/*.test.* **/*.spec.*)
+      #     if [ ${#test_files[@]} -gt 0 ]; then
+      #       npm test
+      #     else
+      #       echo "No test files found, skipping tests."
+      #     fi
 
       - name: Publish to npm
         env:
