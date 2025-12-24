@@ -57,7 +57,6 @@ npm run dev
 
 # 生产模式
 npm run build
-npm start
 ```
 
 ### 测试连接
@@ -85,7 +84,7 @@ npm run build
   "mcpServers": {
     "mysql": {
       "command": "node",
-      "args": ["dist/main.js"],
+      "args": ["/your_local_directory/dist/main.js"],
       "env": {
         "MYSQL_HOST": "localhost",
         "MYSQL_PORT": "3306",
@@ -108,7 +107,7 @@ npm run build
   "mcpServers": {
     "mysql": {
       "command": "npx",
-      "args": ["-y", "@your-npm-username/mysql-mcp-server"],
+      "args": ["-y", "@aalmix/mysql-mcp-server"],
       "env": {
         "MYSQL_HOST": "localhost",
         "MYSQL_PORT": "3306",
@@ -122,35 +121,6 @@ npm run build
 }
 ```
 
-## 发布到 npm
-
-### 1. 准备发布
-
-```bash
-# 确保版本号正确
-npm version patch|minor|major
-
-# 构建
-npm run build
-```
-
-### 2. 登录 npm
-
-```bash
-npm login
-```
-
-### 3. 发布
-
-```bash
-npm publish --access public
-```
-
-### 注意事项
-
-- 包名必须是唯一的，建议使用 `mysql-mcp-server` 或类似名称
-- 首次发布需要设置 `access: public`
-- 每次发布需要更新版本号
 
 ## MCP 工具
 
@@ -185,54 +155,6 @@ READ_ONLY=true
 - `TRUNCATE TABLE`
 - `DELETE FROM` (无 WHERE 条件)
 - `ALTER TABLE ... DROP COLUMN`
-
-## Docker 部署
-
-### 构建镜像
-
-```bash
-docker build -t mysql-mcp-server .
-```
-
-### 运行容器
-
-```bash
-docker run -d \
-  --name mysql-mcp-server \
-  -e MYSQL_HOST=your-db-host \
-  -e MYSQL_PORT=3306 \
-  -e MYSQL_USER=your_user \
-  -e MYSQL_PASSWORD=your_password \
-  -e MYSQL_DATABASE=your_database \
-  -e READ_ONLY=true \
-  mysql-mcp-server
-```
-
-### Docker Compose
-
-```yaml
-version: '3.8'
-services:
-  mysql-mcp-server:
-    build: .
-    environment:
-      - MYSQL_HOST=mysql
-      - MYSQL_PORT=3306
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-      - MYSQL_DATABASE=test_db
-      - READ_ONLY=true
-    depends_on:
-      - mysql
-
-  mysql:
-    image: mysql:8.0
-    environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
-      MYSQL_DATABASE: test_db
-    ports:
-      - "3306:3306"
-```
 
 ## 项目结构
 
