@@ -2,6 +2,13 @@
 
 一个基于 Model Context Protocol (MCP) 的 MySQL 服务端，让 AI 助手（如 Claude、Cursor）能够通过自然语言直接查询和管理 MySQL 数据库。
 
+## 演示视频
+
+[演示视频](./doc/demoVidio.mp4)
+
+[![演示视频](https://img.youtube.com/vi/N2wsynta_To/maxresdefault.jpg)](https://www.youtube.com/watch?v=N2wsynta_To)
+
+
 ## 功能特性
 
 ### 核心功能
