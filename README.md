@@ -4,8 +4,7 @@
 
 ## 演示视频
 
-[演示视频](./doc/demoVidio.mp4)
-
+点击下方图片进行播放 ▶️
 [![演示视频](https://img.youtube.com/vi/N2wsynta_To/maxresdefault.jpg)](https://www.youtube.com/watch?v=N2wsynta_To)
 
 
